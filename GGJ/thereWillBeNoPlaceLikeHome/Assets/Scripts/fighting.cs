@@ -17,7 +17,7 @@ public class fighting : MonoBehaviour
 
     void Start()
     {
-        punchCollider = GetComponent<BoxCollider2D>();
+
 
     }
 
