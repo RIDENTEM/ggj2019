@@ -5,11 +5,10 @@ using UnityEngine;
 public class movement : MonoBehaviour
 {
 
-    Rigidbody2D homeRigidBody;
-    SpriteRenderer homeSpriteRenderer;
     Vector3 refVector = Vector3.zero;
-   [SerializeField] float runSpeed = 1.0f;
-    public LayerMask groundLayer;
+    [SerializeField] float runSpeed = 1.0f;
+    [SerializeField] GameObject groundCheck;
+    public LayerMask groundLayer; 
     float jumpSpeed = 400.0f;
     float horizontalMove = 0.0f;
     float smoothedMovement = 0.5f;
@@ -18,55 +17,54 @@ public class movement : MonoBehaviour
     bool inAir = false;
     bool grounded = true;
     void Start()
-    {
-        homeRigidBody = GetComponent<Rigidbody2D>();
-        homeSpriteRenderer = GetComponent<SpriteRenderer>();
+    { 
     }
 
-
-    void Update()
+    void checkIfGrounded()
     {
-
-    }
-
-    void jump()
-    {
-        homeRigidBody.AddForce(new Vector2(0.0f, jumpSpeed));
-    }
-
-    private void FixedUpdate()
-    {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-        //homeRigidBody.AddForce(horizontalMove);
-        Vector3 targetVelocity = new Vector2(horizontalMove * 10.0f, homeRigidBody.velocity.y);
-        homeRigidBody.velocity = targetVelocity;
-        
-
+        if (Physics2D.OverlapCircle(groundCheck.transform.position, 0.15f, LayerMask.GetMask("ground")))
+        {
+            grounded = true;
+        }
         if (grounded == true)
         {
-
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Debug.Log("jumped");
-                jump();
+                grounded = false;
+
+                mainHomeManager.singletonHomeManager.homeRigidBody.AddForce(new Vector2(0.0f, jumpSpeed));
                 inAir = true;
             }
         }
+    }
+
+    void flipSprite(float horizontalDirection)
+    {
+
         //if home is moving left and isn't flipped flip it left
-        if (horizontalMove < 0)
+        if (horizontalDirection < 0)
         {
-            flippedX = true;
+            mainHomeManager.singletonHomeManager.homeSpriteRenderer .flipX = false;
 
         }
         //if home is moving right and is flipped flip it right
-        if (horizontalMove > 0)
+        if (horizontalDirection > 0)
         {
-            flippedX = false;
+            mainHomeManager.singletonHomeManager.homeSpriteRenderer.flipX = true;
         }
-
-        if (flippedX == true)
-            homeSpriteRenderer.flipX = true;
-        else if (flippedX == false)
-            homeSpriteRenderer.flipX = false;
     }
+
+    void Update()
+    {
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        Vector3 targetVelocity = new Vector2(horizontalMove * 5.0f, mainHomeManager.singletonHomeManager.homeRigidBody.velocity.y);
+
+        mainHomeManager.singletonHomeManager.homeRigidBody.velocity = targetVelocity;
+        flipSprite(targetVelocity.x);
+
+    }
+
+
+
 }
