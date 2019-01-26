@@ -63,6 +63,7 @@ public class movement : MonoBehaviour
         mainHomeManager.singletonHomeManager.homeRigidBody.velocity = targetVelocity;
         flipSprite(targetVelocity.x);
 
+        checkIfGrounded();
     }
 
 
