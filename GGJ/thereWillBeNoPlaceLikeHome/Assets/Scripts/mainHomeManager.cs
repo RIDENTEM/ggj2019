@@ -30,7 +30,7 @@ public class mainHomeManager : MonoBehaviour
         homeBodyCollider = GetComponent<BoxCollider2D>();
 
         homeSpriteRenderer = GetComponent<SpriteRenderer>();
-        homeSpriteRenderer.sprite = homeImages[currentHouseImage];
+        //homeSpriteRenderer.sprite = homeImages[currentHouseImage];
         
     }
 
