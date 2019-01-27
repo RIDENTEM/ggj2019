@@ -8,6 +8,7 @@ public class enemyManager : MonoBehaviour
     public int enemiesInLevel;
     private int currentScene;
 
+
     void Start()
     {
         currentScene = SceneManager.GetActiveScene().buildIndex;
