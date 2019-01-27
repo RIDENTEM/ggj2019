@@ -6,7 +6,7 @@ public class movement : MonoBehaviour
 {
 
     Vector3 refVector = Vector3.zero;
-    [SerializeField] float runSpeed = 1.0f;
+    [SerializeField] float runSpeed = 5.0f;
     [SerializeField] GameObject groundCheck;
     public LayerMask groundLayer; 
     float jumpSpeed = 400.0f;
@@ -15,17 +15,18 @@ public class movement : MonoBehaviour
     //when true image is flipped to other side
     bool flippedX = false;
     bool inAir = false;
-    bool grounded = true;
+    public bool grounded = true;
     void Start()
     { 
     }
 
     void checkIfGrounded()
     {
-        if (Physics2D.OverlapCircle(groundCheck.transform.position, 0.15f, LayerMask.GetMask("ground")))
+        if (Physics2D.OverlapCircle(groundCheck.transform.position, 0.5f, LayerMask.GetMask("ground")))
         {
             grounded = true;
         }
+
         if (grounded == true)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -33,7 +34,7 @@ public class movement : MonoBehaviour
                 Debug.Log("jumped");
                 grounded = false;
 
-                mainHomeManager.singletonHomeManager.homeRigidBody.AddForce(new Vector2(0.0f, jumpSpeed));
+                mainHomeManager.singletonHomeManager.homeRigidBody.AddForce(new Vector2(0.0f, jumpSpeed * 5.0f));
                 inAir = true;
             }
         }
