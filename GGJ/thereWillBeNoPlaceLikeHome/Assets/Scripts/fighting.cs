@@ -6,10 +6,12 @@ public class fighting : MonoBehaviour
 {
 
 
-    [SerializeField] BoxCollider2D punchCollider;
+    [SerializeField] BoxCollider2D punchColliderRight;
+    [SerializeField] BoxCollider2D punchColliderLeft;
+    enemyHealth currEnemyHealth;
     Animator fightingController;
-    float punchForceStraight = 10.0f;
-    float punchForceUp = 5.0f;
+    float punchForceStraight = 1000.0f;
+    float punchForceUp = 500.0f;
     bool onPunch1 = true;
     bool onPunch2 = false;
     bool onPunch3 = false;
@@ -27,20 +29,34 @@ public class fighting : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            punchCollider.enabled = true;
-            // fightingController.play
+            if (mainHomeManager.singletonHomeManager.homeSpriteRenderer.flipX == true)
+            {
+                punchColliderLeft.enabled = true;
+            }
+            if (mainHomeManager.singletonHomeManager.homeSpriteRenderer.flipX == false)
+            {
+                punchColliderRight.enabled = true;
+            }
 
         }
         else
-            punchCollider.enabled = false;
+        {
+            punchColliderRight.enabled = false;
+            punchColliderLeft.enabled = false;
+        }
+
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject objectCollidedWith = collision.gameObject;
         Rigidbody2D objectRigidbody = objectCollidedWith.GetComponent<Rigidbody2D>();
         if (objectCollidedWith.tag == "Enemy")
         {
+            currEnemyHealth = objectCollidedWith.GetComponent<enemyHealth>();
+            Debug.Log(currEnemyHealth);
+            if (currEnemyHealth)
+                currEnemyHealth.takeDamage();
             if (onPunch1)
                 objectRigidbody.AddForce(new Vector2(punchForceStraight * 0.5f, 0.0f));
             else if (onPunch2)
@@ -49,4 +65,5 @@ public class fighting : MonoBehaviour
                 objectRigidbody.AddForce(new Vector2(0.0f, punchForceUp * 2.0f));
         }
     }
+
 }

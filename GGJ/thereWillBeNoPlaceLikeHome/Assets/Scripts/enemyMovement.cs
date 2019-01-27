@@ -20,7 +20,7 @@ public class enemyMovement : MonoBehaviour
         patrolPoints.Add(childPatrolPointTransforms[2].position);
         patrolPoints.Add(childPatrolPointTransforms[3].position);
         enemyNavAgent = GetComponentInChildren<NavMeshAgent>();
-       // enemyNavAgent.SetDestination(patrolPos1);
+        // enemyNavAgent.SetDestination(patrolPos1);
 
     }
 
@@ -32,12 +32,12 @@ public class enemyMovement : MonoBehaviour
 
     void Update()
     {
+        if (enemyNavAgent)
+            if (!enemyNavAgent.pathPending && enemyNavAgent.remainingDistance < 0.95f)
+            {
 
-        if(!enemyNavAgent.pathPending && enemyNavAgent.remainingDistance < 0.95f)
-        {
+                goToNextPoint();
 
-            goToNextPoint();
-            
-        }
+            }
     }
 }

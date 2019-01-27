@@ -2,26 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class health : MonoBehaviour {
+public class health : MonoBehaviour
+{
 
     public static health healthManager;
     private int maxHealth = 3;
-    public static int currentHealth;
-    [SerializeField] SpriteRenderer[] healthBar;
+    private int currentHealth;
+    [SerializeField] GameObject[] healthBar;
 
-    private void Start()
+    private void Awake()
     {
         healthManager = this;
         currentHealth = maxHealth;
-        for (int i = 0; i < healthBar.Length; i++)
-            healthBar[i].color = Color.green;
 
     }
-
-     public void gotHurt()
+    private void Start()
     {
-        currentHealth -= 1;
-        healthBar[currentHealth].color = Color.red;
+        for (int i = 0; i < healthBar.Length; i++)
+            healthBar[i].SetActive(true);
+
     }
-    
+
+    public void gotHurt()
+    {
+        if (currentHealth > 0)
+        {
+
+            currentHealth -= 1;
+            healthBar[currentHealth].SetActive(false);
+        }
+    }
+
 }

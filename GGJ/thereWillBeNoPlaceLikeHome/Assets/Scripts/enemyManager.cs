@@ -7,9 +7,11 @@ public class enemyManager : MonoBehaviour
     
     public int enemiesInLevel;
     private int currentScene;
+    public static enemyManager singleEnemyManager;
 
     void Start()
     {
+        singleEnemyManager = this;
         currentScene = SceneManager.GetActiveScene().buildIndex;
         
         enemiesInLevel = GameObject.FindGameObjectsWithTag("Enemy").Length;
@@ -30,6 +32,6 @@ public class enemyManager : MonoBehaviour
 
     void Update()
     {
-        allEnemiesDeadCheck();
+        Debug.Log("Enemies in level: " + enemiesInLevel);
     }
 }

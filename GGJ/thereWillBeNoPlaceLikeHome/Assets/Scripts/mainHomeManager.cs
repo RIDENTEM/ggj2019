@@ -10,18 +10,20 @@ public class mainHomeManager : MonoBehaviour
     private enemyManager manageEnemies;
 
     public SpriteRenderer homeSpriteRenderer;
-    [SerializeField] Sprite[] homeImages;
+    [SerializeField] Sprite[] homeSprites;
     static private int currentHouseImage = 0;
 
     Collider2D homeBodyCollider;
     public Rigidbody2D homeRigidBody;
-     
+
+    [SerializeField] GameObject respawnSpot;
 
     private void Awake()
     {
         if (singletonHomeManager == null)
             singletonHomeManager = this;
-        
+
+        respawnSpot = GameObject.FindGameObjectWithTag("homeSpawn");
     }
 
     void Start()
@@ -36,15 +38,20 @@ public class mainHomeManager : MonoBehaviour
 
     void fallCheck()
     {
-        if(gameObject.transform.position.y <= 5.0f)
+        if(gameObject.transform.position.y <= -5.0f)
         {
             health.healthManager.gotHurt();
+            respawn();
         }
+    }
+    void respawn()
+    {
+        gameObject.transform.position = respawnSpot.transform.position;
     }
 
     void changeHomeAppearance()
     {
-        homeSpriteRenderer.sprite = homeImages[currentHouseImage];
+        homeSpriteRenderer.sprite = homeSprites[currentHouseImage];
         currentHouseImage++;
     }
 
@@ -54,7 +61,7 @@ public class mainHomeManager : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             health.healthManager.gotHurt();
-            homeRigidBody.AddForce(new Vector2(Vector2.left.x, 1.0f));
+            homeRigidBody.AddForce(new Vector2(Vector2.left.x * 2000.0f, 10.0f));
 
 
         }
@@ -62,6 +69,6 @@ public class mainHomeManager : MonoBehaviour
 
     void Update()
     {
-        
+        fallCheck();
     }
 }

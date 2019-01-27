@@ -6,7 +6,7 @@ public class movement : MonoBehaviour
 {
 
     Vector3 refVector = Vector3.zero;
-    [SerializeField] float runSpeed = 5.0f;
+    [SerializeField] float runSpeed = 8.0f;
     [SerializeField] GameObject groundCheck;
     public LayerMask groundLayer; 
     float jumpSpeed = 400.0f;
@@ -14,7 +14,6 @@ public class movement : MonoBehaviour
     float smoothedMovement = 0.5f;
     //when true image is flipped to other side
     bool flippedX = false;
-    bool inAir = false;
     public bool grounded = true;
     void Start()
     { 
@@ -31,11 +30,9 @@ public class movement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log("jumped");
                 grounded = false;
 
                 mainHomeManager.singletonHomeManager.homeRigidBody.AddForce(new Vector2(0.0f, jumpSpeed * 5.0f));
-                inAir = true;
             }
         }
     }
@@ -46,7 +43,7 @@ public class movement : MonoBehaviour
         //if home is moving left and isn't flipped flip it left
         if (horizontalDirection < 0)
         {
-            mainHomeManager.singletonHomeManager.homeSpriteRenderer .flipX = true;
+            mainHomeManager.singletonHomeManager.homeSpriteRenderer.flipX = true;
 
         }
         //if home is moving right and is flipped flip it right
