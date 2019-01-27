@@ -54,6 +54,7 @@ public class mainHomeManager : MonoBehaviour
 
     void Update()
     {
-
+        if (homeRigidBody.velocity.x < 0) homeSpriteRenderer.flipX = true;
+        else if (homeRigidBody.velocity.x > 0) homeSpriteRenderer.flipX = false;
     }
 }
