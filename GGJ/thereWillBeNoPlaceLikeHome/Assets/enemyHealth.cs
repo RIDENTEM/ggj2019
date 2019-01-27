@@ -24,11 +24,18 @@ public class enemyHealth : MonoBehaviour {
         Debug.Log("This enemy has: " + health + " health");
         if(health <= 0)
         {
+
+            enemyManager.singleEnemyManager.enemiesInLevel -= 1;
+            enemyManager.singleEnemyManager.allEnemiesDeadCheck();
             Destroy(gameObject);
         }
     }
-	// Update is called once per frame
-	void Update () {
+    private void OnDestroy()
+    {
+
+    }
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }

@@ -724,18 +724,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
   m_IsActive: 1
---- !u!65 &688938354
-BoxCollider:
+--- !u!61 &688938354
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 688938353}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.000000029802322, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &688938355
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -995,6 +1008,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 769299872}
+  - component: {fileID: 769299873}
   m_Layer: 0
   m_Name: playerSpawnPoint
   m_TagString: homeSpawn
@@ -1015,6 +1029,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &769299873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 769299871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284c8339f6eaaa6409345829153ade81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesInLevel: 0
 --- !u!1 &913747485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,7 +1133,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 913747485}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.8874342, y: 0, z: -2.071827}
+  m_LocalPosition: {x: 3.79, y: 0, z: -2.071827}
   m_LocalScale: {x: 1.8546984, y: 1, z: 8.1944}
   m_Children: []
   m_Father: {fileID: 179642723}
@@ -1164,7 +1190,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4613002164973836, guid: 0a183cbfceec4da4fbf5c39785b5b543, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 43.63
+      value: 41.828213
       objectReference: {fileID: 0}
     - target: {fileID: 4613002164973836, guid: 0a183cbfceec4da4fbf5c39785b5b543, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1293,7 +1319,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1134422343}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.3216496, y: 5.16, z: -2.071827}
+  m_LocalPosition: {x: 4.161, y: 5.16, z: -2.071827}
   m_LocalScale: {x: 1.8546984, y: 1, z: 8.1944}
   m_Children: []
   m_Father: {fileID: 179642723}
@@ -1352,7 +1378,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.86, y: 2.7}
+    oldSize: {x: 1, y: 1.451613}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1669,7 +1695,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4613002164973836, guid: 0a183cbfceec4da4fbf5c39785b5b543, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 49.7
+      value: 48.607216
       objectReference: {fileID: 0}
     - target: {fileID: 4613002164973836, guid: 0a183cbfceec4da4fbf5c39785b5b543, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1715,7 +1741,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4613002164973836, guid: 0a183cbfceec4da4fbf5c39785b5b543, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 38.760002
+      value: 37.667217
       objectReference: {fileID: 0}
     - target: {fileID: 4613002164973836, guid: 0a183cbfceec4da4fbf5c39785b5b543, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1761,7 +1787,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4613002164973836, guid: 0a183cbfceec4da4fbf5c39785b5b543, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 54.57
+      value: 52.76821
       objectReference: {fileID: 0}
     - target: {fileID: 4613002164973836, guid: 0a183cbfceec4da4fbf5c39785b5b543, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1884,7 +1910,7 @@ Camera:
   m_GameObject: {fileID: 1752880857}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
