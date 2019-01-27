@@ -186,7 +186,8 @@ GameObject:
   - component: {fileID: 61473475189890426}
   - component: {fileID: 114289208839210692}
   - component: {fileID: 114249951425490638}
-  - component: {fileID: 82337472925103380}
+  - component: {fileID: 82295964519942478}
+  - component: {fileID: 114353539142788682}
   m_Layer: 0
   m_Name: home
   m_TagString: Untagged
@@ -543,7 +544,7 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1507465913004988}
   m_Enabled: 1
---- !u!82 &82337472925103380
+--- !u!82 &82295964519942478
 AudioSource:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -553,7 +554,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8969887b35760d74d864c505af4c62f1, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -703,6 +704,21 @@ MonoBehaviour:
   homeSprites: []
   homeRigidBody: {fileID: 0}
   respawnSpot: {fileID: 0}
+--- !u!114 &114353539142788682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1938441712782398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7665f75b4a3411440a7e2dabcd22bed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114806784973631812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -714,9 +730,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d60e24c5c04334286302073a0a06d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  punchColliderRight: {fileID: 0}
-  punchColliderLeft: {fileID: 0}
-  punchClips: []
+  punchColliderRight: {fileID: 61422361013486324}
+  punchColliderLeft: {fileID: 61713710806765900}
+  punchClips:
+  - {fileID: 8300000, guid: 5b69ef75e01a20941a12875435043b1b, type: 3}
+  - {fileID: 8300000, guid: 3f05479f07f75da45a8f128d904bbcec, type: 3}
+  - {fileID: 8300000, guid: 83ccd2f6d2d7bd043a687491cafb4330, type: 3}
+  - {fileID: 8300000, guid: 979959542319df844b93300c689a3315, type: 3}
 --- !u!212 &212115300768948020
 SpriteRenderer:
   m_ObjectHideFlags: 1
