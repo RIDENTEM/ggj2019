@@ -15,13 +15,13 @@ public class mainHomeManager : MonoBehaviour
 
     Collider2D homeBodyCollider;
     public Rigidbody2D homeRigidBody;
-
-    health healthObject;
+     
 
     private void Awake()
     {
         if (singletonHomeManager == null)
             singletonHomeManager = this;
+        
     }
 
     void Start()
@@ -32,6 +32,14 @@ public class mainHomeManager : MonoBehaviour
         homeSpriteRenderer = GetComponent<SpriteRenderer>();
         //homeSpriteRenderer.sprite = homeImages[currentHouseImage];
         
+    }
+
+    void fallCheck()
+    {
+        if(gameObject.transform.position.y <= 5.0f)
+        {
+            health.healthManager.gotHurt();
+        }
     }
 
     void changeHomeAppearance()
@@ -45,7 +53,7 @@ public class mainHomeManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            healthObject.gotHurt();
+            health.healthManager.gotHurt();
             homeRigidBody.AddForce(new Vector2(Vector2.left.x, 1.0f));
 
 
