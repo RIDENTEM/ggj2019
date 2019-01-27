@@ -8,6 +8,8 @@ public class fighting : MonoBehaviour
 
     [SerializeField] BoxCollider2D punchColliderRight;
     [SerializeField] BoxCollider2D punchColliderLeft;
+    AudioSource punchSource;
+   [SerializeField] AudioClip[] punchClips;
     enemyHealth currEnemyHealth;
     Animator fightingController;
     float punchForceStraight = 1000.0f;
@@ -19,8 +21,7 @@ public class fighting : MonoBehaviour
 
     void Start()
     {
-
-
+        punchSource = GetComponent<AudioSource>();
     }
 
 
@@ -46,14 +47,15 @@ public class fighting : MonoBehaviour
         }
 
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject objectCollidedWith = collision.gameObject;
         Rigidbody2D objectRigidbody = objectCollidedWith.GetComponent<Rigidbody2D>();
         if (objectCollidedWith.tag == "Enemy")
         {
             currEnemyHealth = objectCollidedWith.GetComponent<enemyHealth>();
+
+            punchSource.PlayOneShot(punchClips[Random.Range(0, punchClips.Length - 1)], 0.5f);
             Debug.Log(currEnemyHealth);
             if (currEnemyHealth)
                 currEnemyHealth.takeDamage();
@@ -65,5 +67,6 @@ public class fighting : MonoBehaviour
                 objectRigidbody.AddForce(new Vector2(0.0f, punchForceUp * 2.0f));
         }
     }
+     
 
 }

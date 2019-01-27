@@ -24,6 +24,11 @@ public class enemyMovement : MonoBehaviour
 
     }
 
+    void moveTowardPlayer()
+    {
+        Vector2.MoveTowards(transform.position, mainHomeManager.singletonHomeManager.transform.position, 1.0f);
+    }
+
     void goToNextPoint()
     {
         enemyNavAgent.destination = patrolPoints[destPoint];

@@ -6,8 +6,10 @@ public class movement : MonoBehaviour
 {
 
     Vector3 refVector = Vector3.zero;
-    [SerializeField] float runSpeed = 8.0f;
+    private float runSpeed = 4.0f;
     [SerializeField] GameObject groundCheck;
+    AudioSource playerMoveSource;
+    AudioClip[] movementClips;
     public LayerMask groundLayer; 
     float jumpSpeed = 400.0f;
     float horizontalMove = 0.0f;
@@ -15,8 +17,10 @@ public class movement : MonoBehaviour
     //when true image is flipped to other side
     bool flippedX = false;
     public bool grounded = true;
-    void Start()
-    { 
+
+    private void Start()
+    {
+        playerMoveSource = GetComponent<AudioSource>();
     }
 
     void checkIfGrounded()
@@ -56,6 +60,12 @@ public class movement : MonoBehaviour
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        if (horizontalMove != 0)
+        {
+            playerMoveSource.volume = 1.0f;
+        }
+        else
+            playerMoveSource.volume = 0.0f;
         Vector3 targetVelocity = new Vector2(horizontalMove * 5.0f, mainHomeManager.singletonHomeManager.homeRigidBody.velocity.y);
 
         mainHomeManager.singletonHomeManager.homeRigidBody.velocity = targetVelocity;
