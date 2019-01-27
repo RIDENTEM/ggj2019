@@ -8,6 +8,7 @@ public class fighting : MonoBehaviour
 
     [SerializeField] BoxCollider2D punchColliderRight;
     [SerializeField] BoxCollider2D punchColliderLeft;
+    enemyHealth currEnemyHealth;
     Animator fightingController;
     float punchForceStraight = 1000.0f;
     float punchForceUp = 500.0f;
@@ -52,7 +53,7 @@ public class fighting : MonoBehaviour
         Rigidbody2D objectRigidbody = objectCollidedWith.GetComponent<Rigidbody2D>();
         if (objectCollidedWith.tag == "Enemy")
         {
-            enemyHealth currEnemyHealth = objectCollidedWith.GetComponent<enemyHealth>();
+            currEnemyHealth = objectCollidedWith.GetComponent<enemyHealth>();
             Debug.Log(currEnemyHealth);
             if (currEnemyHealth)
                 currEnemyHealth.takeDamage();
