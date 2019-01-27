@@ -29,6 +29,7 @@ public class fighting : MonoBehaviour
         {
             punchCollider.enabled = true;
             // fightingController.play
+
         }
         else
             punchCollider.enabled = false;
