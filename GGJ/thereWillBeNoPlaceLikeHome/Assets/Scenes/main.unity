@@ -148,11 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   homeSpriteRenderer: {fileID: 0}
-  homeImages:
-  - {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  homeSprites: []
   homeRigidBody: {fileID: 0}
+  respawnSpot: {fileID: 0}
 --- !u!61 &5811381
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -169,7 +167,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.86, y: 2.7}
+    oldSize: {x: 1, y: 1.451613}
     newSize: {x: 1.86, y: 2.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -189,7 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d60e24c5c04334286302073a0a06d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  punchCollider: {fileID: 1671747719}
+  punchColliderRight: {fileID: 0}
+  punchColliderLeft: {fileID: 0}
 --- !u!95 &5811383
 Animator:
   serializedVersion: 3
@@ -565,7 +564,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.12}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -585,7 +584,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 436128834}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5811387}
@@ -827,8 +826,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1679458948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.34, z: 1}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalPosition: {x: 0, y: -0.72, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 1475564666}
   - {fileID: 1764197599}
