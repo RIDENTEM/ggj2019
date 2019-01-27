@@ -46,13 +46,13 @@ public class movement : MonoBehaviour
         //if home is moving left and isn't flipped flip it left
         if (horizontalDirection < 0)
         {
-            mainHomeManager.singletonHomeManager.homeSpriteRenderer .flipX = false;
+            mainHomeManager.singletonHomeManager.homeSpriteRenderer .flipX = true;
 
         }
         //if home is moving right and is flipped flip it right
         if (horizontalDirection > 0)
         {
-            mainHomeManager.singletonHomeManager.homeSpriteRenderer.flipX = true;
+            mainHomeManager.singletonHomeManager.homeSpriteRenderer.flipX = false;
         }
     }
 
