@@ -25,7 +25,6 @@ public class animation : MonoBehaviour {
 
     void updateLegs()
     {
-        print(timer);
         legL.transform.localScale = new Vector3(dir, 1, 1);
         legR.transform.localScale = new Vector3(dir, 1, 1);
         legL.transform.localEulerAngles = new Vector3(0, 0, Mathf.Sin(timer)*75);
